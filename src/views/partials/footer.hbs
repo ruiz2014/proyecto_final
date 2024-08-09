@@ -1,0 +1,97 @@
+<footer class="blog-footer">
+      <p>Copyright @2024, All Rights Reserved   <a href="https://getbootstrap.com/">Creado</a> by <a href="https://twitter.com/mdo">@mruizespil</a>.</p>
+      <p>
+        {{!-- <a href="#">Back to top</a> --}}
+      </p>
+</footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.datatables.net/2.0.8/js/dataTables.js"></script>
+  <script>
+    $(document).ready( function () {
+        $('#myTable').DataTable();
+    });
+
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+
+    var xValues = ["Televi", "Micro", "Frigder"];
+    var yValues = [55, 49, 44];
+    var barColors = ["red", "green","blue"];
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Telvi', 'Frigder.', 'sillon', 'Movil', 'Camisa', 'Micro'],
+        datasets: [{
+          label: '# de Ventas',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+
+     new Chart(ctx2, {
+      type: "pie",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "World Wide Wine Production"
+        }
+      }
+     });
+  </script>
+  <script>
+    var wrapImg = document.getElementById('wrap-img');
+    var wrapImg2 = document.getElementById('wrap-img2');
+    var marca = document.getElementById("marca");
+    var categoria = document.getElementById("categoria");
+    wrapImg.style.display ="none"
+
+      function pregunta() {
+          return confirm('¿Deseas eliminar el sgte producto?');
+      }
+
+      function init() {
+        var inputFile = document.getElementById('imagen');
+        inputFile.addEventListener('change', mostrarImagen, false);
+      }
+
+      function mostrarImagen(event) {
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(event) {
+            var img = document.getElementById('img1');
+            img.src= event.target.result;
+        }
+        wrapImg2.style.display ="none"
+        wrapImg.style.display ="block"
+
+        reader.readAsDataURL(file);
+      }
+
+      function loaded(){
+        text = marca.dataset.mark
+        marca.value = text
+        textc = categoria.dataset.category
+        categoria.value = textc
+      }
+
+      window.addEventListener('load', init, false);
+      window.addEventListener('load', loaded, false);
+      
+  </script>

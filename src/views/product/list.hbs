@@ -1,0 +1,39 @@
+<div class="row">
+    {{!-- <button class="btn btn-primary mt-3 mb-5">Crear Producto</button> --}}
+    <a class="btn btn-primary mt-3 mb-5" href="/productos/crear">Crear Producto</a>
+</div>
+<div class="row mb-2">
+    <table class="table table-striped">
+            <caption>Productos</caption>
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Precio S/.</th>
+                    <th>Stock</th>
+                    <th>Imagen</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+        {{#each products}}
+                <tr>
+                    <td>{{name}}</td>
+                    <td>{{price}}</td>
+                    <td>{{stop}}</td>
+                    <td>
+                {{#if image}}
+                        <img src="./uploads/{{image}}" alt="{{name}}" style="max-width: 130px;">
+
+                {{/if}}
+                        <img src="" alt="">
+                    </td>
+                    <td>
+                        <a href="/productos/show/{{_id}}"><span class="material-symbols-outlined">visibility</span></a>
+                        <a href="/productos/edit/{{_id}}"><span class="material-symbols-outlined">Edit</span></a>
+                        <a onclick="return pregunta()" href="/productos/delete/{{_id}}"><span class="material-symbols-outlined">delete</span></a>
+                    </td>
+                </tr>   
+        {{/each}}
+            </tbody>
+    </table>
+</div>

@@ -1,0 +1,109 @@
+<form action="/productos/edit/{{product._id}}" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate="">
+            <div class="mb-3">
+              <label for="username">Nombre</label>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="name" name="name" value="{{ product.name }}" placeholder="Name" required="">
+                <div class="invalid-feedback" style="width: 100%;">
+                  Your Nombre is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="firstName">Precio</label>
+                <input type="number" class="form-control" id="price" name="price" placeholder="" value="{{ product.price }}" required="">
+                <div class="invalid-feedback">
+                  Valid Price is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="lastName">Stop</label>
+                <input type="number" class="form-control" id="stop" name="stop" placeholder="" value="{{ product.stop }}" required="">
+                <div class="invalid-feedback">
+                  Valid Stop is required.
+                </div>
+              </div>
+            </div>
+
+            {{!-- <div class="mb-3">
+              <label for="email">Email <span class="text-muted">(Optional)</span></label>
+              <input type="email" class="form-control" id="email" placeholder="youexample.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Address</label>
+              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
+              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+            </div> --}}
+
+            <div class="row">
+              <div class="col-md-5 mb-3">
+                <label for="country">Categoria</label>
+                <select class="custom-select d-block w-100" id="categoria" data-category="{{ product.categoria }}" name="categoria" required="">
+                  <option value="">Elegir...</option>
+                  <option value="Linea Hogar">Linea Hogar</option>
+                  <option value="Linea Oficina">Linea Oficina</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <label for="state">Marca</label>
+                <select class="custom-select d-block w-100" data-mark="{{ product.marca }}" id="marca"  name="marca" required="">
+                  <option value="">Elegir...</option>
+                  <option value="LG">LG</option>
+                  <option value="Samsung">Samsung</option>
+                  <option value="Phillips">Phillips</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please provide a valid state.
+                </div>
+              </div>
+            </div>
+
+            {{#if product.image}}
+            <div class="row">
+                <div class="col-md-12">
+                  <div id="wrap-img2">
+                      <label for="product_img" class="form-label">Imagen</label>
+                      <img  src="/uploads/{{product.image}}" alt="{{product.name}}" style="max-width: 300px;">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="row">
+              <div class="col-md-12">
+                <div id="wrap-img">
+                    <label for="product_img" class="form-label">Imagen</label>
+                    <img id="img1" src="" alt="imagen de producto">
+                </div>
+              </div>
+            </div>
+            {{/if}}
+            <div class="row">
+              <div class="col-md-8 mb-3">
+                <label for="cc-name">Imagen de Producto</label>
+                <input type="file" id="imagen" name="imagen" >
+                <small class="text-muted">Solo imagenes</small>
+
+              </div>
+            </div>
+
+            <hr class="mb-4">
+            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+          </form>
